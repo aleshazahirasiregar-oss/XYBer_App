@@ -1,23 +1,23 @@
 import config
-from core_manager import check_update_policy, check_beta_slots
+from .core_manager import check_update_policy, check_beta_slots
 
 def main():
-    print("============================================")
-    print(f" SYSTEM INITIALIZATION: {config.APP_NAME}")
-    print(f" VERSION: {config.VERSION}")
-    print(" STATUS: SECURE | ENTERPRISE MODE ACTIVE")
-    print("============================================")
+    print("\n" + "="*50)
+    print(f" {config.APP_NAME.upper()} | VERSION: {config.VERSION}")
+    print("="*50)
     
-    app = "com.whatsapp"
-    policy = check_update_policy(app)
-    beta = check_beta_slots(100)
+    # Simulasi testing dengan error handler
+    apps_to_test = ["com.whatsapp", 12345] 
     
-    print(f"[PROCESS] Checking Package: {app}")
-    print(f"[RESULT] Policy Applied: {policy}")
-    print("--------------------------------------------")
-    print(f"[STATUS] Beta Enrollment: {beta}")
-    print("============================================")
-    print("SYSTEM READY FOR DEPLOYMENT")
+    for app in apps_to_test:
+        policy = check_update_policy(app)
+        print(f"[*] Analyzing: {app}")
+        print(f"    [Result]: {policy}")
+        print("-" * 50)
+        
+    status = check_beta_slots(500)
+    print(f"[!] Beta Enrollment: {status}")
+    print("="*50 + "\n")
 
 if __name__ == "__main__":
     main()
